@@ -33,7 +33,7 @@ def main():
             paragraph = paragraph.strip()
             if len(paragraph) == 0: continue
             para_num += 1
-            print 'Processing para: %d' %para_num
+            print('Processing para: %d' %para_num)
             # Parse each sentence
             parsed_para = nlp(unicode(paragraph))
             for sent in parsed_para.sents:
@@ -43,10 +43,10 @@ def main():
                 adjectives.update(adj)
                 freqs.update(freq)
                 
-    print 'Parsing corpus done....!'
+    print('Parsing corpus done....!')
     
     new_nouns, new_verbs, new_adjectives = calc_lmi(nouns, verbs, adjectives, freqs) 
-    print 'Computing LMI done.....!'          
+    print('Computing LMI done.....!'          )
     # Write to file
     with gzip.open(output_dir  + args.output + '_noun', 'wb') as fnoun:
         for pair, value in new_nouns.iteritems():
@@ -63,7 +63,7 @@ def main():
             st = '\t'.join([pair[0], pair[1], '\t'.join([str(value[0]), str(value[1])])])
             fadj.write(st + '\n')
             
-    print 'Done.........!'
+    print('Done.........!')
                     
                     
 def process_one_sentence(sent, window_size):
